@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"E:/work/研一/高级数据库/workplace/作业6/project/venv/Scripts/python.exe\" --version)",
+      "Bash(\"E:/work/研一/高级数据库/workplace/作业6/project/venv/Scripts/python.exe\" -m pip list)",
+      "Bash(\"./venv/Scripts/python.exe\" main.py --help)",
+      "Bash(\"./venv/Scripts/python.exe\" main.py stats)",
+      "Bash(\"./venv/Scripts/python.exe\" -c \"import api; print\\('api module loaded'\\); print\\('routes:', [r.path for r in api.app.routes]\\)\")",
+      "Bash(\"./venv/Scripts/python.exe\" api.py)",
+      "Bash(curl *)",
+      "Bash(netstat -ano)",
+      "Bash(\"./venv/Scripts/python.exe\" -m uvicorn api:app --host 0.0.0.0 --port 8001)",
+      "Bash(./venv/Scripts/python.exe --version)",
+      "Bash(git init *)",
+      "Bash(git branch *)",
+      "Bash(git add *)",
+      "Bash(git -c user.email=local@local -c user.name=local commit -m \"chore: init git repo with gitignore\")",
+      "Bash(git config *)"
+    ]
+  }
+}

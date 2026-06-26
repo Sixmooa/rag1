@@ -1,0 +1,45 @@
+多神经元与输出层的softmax函数-从回归到多分类
+多个神经元的表示
+多神经元结构允许表示更加复杂的映射关系。每个神经元学习一部分局部特征，最终组合起来增强了整体的表达能力。
+神经元数量从1增加到n每个神经元有自己的一组参数w，b不同神经元可以学习到不同的特征映射最终输出是n个神经元输出的组合 这种结构提升了模型拟合复杂问题的能力，是构建经网络的基础。
+输出层的softmax函数
+对于个向量x =[x1， x2，…,xn],其softmax函数定义为:
+softmax(xi) =
+即对每个元素xi:
+softmax(xi) =
+ex1 +ex2 + …+ extn
+softmax函数的主要性质是：
+将任意实数向量归一化为概率分布,范围在[0，1]概率和为1,即∑=1 80ftmax(xi) = 1 保留了输入元素相对大小的关系
+
+5.增加模型确定性，生成值域范围固定的概率输出。
+6.提供类别之间可比性，概率表示预测的置信度。
+综上,softmax可将网络输出转换为概率，实现多分类定义损失函数最终用于类别预测，这是它被广泛应用于神经网络输出层的主要原因。
+softmax函数的使用
+在 PyTorch 中，softmax函数用于将输入张量的每个元素转换为概率分布。dim参数指定了在哪个维度上进行 softmax 操作。例如，假设我们有一个形状为(3，2)的张量x：
+X = torch.tensor([[1.0, 2.0],
+[3.0,4.0],
+[5.0,6.0]])
+如果我们调用torch.softmax(x，dim=0)，那么softmax操作将在每一列上进行，即：torch.softmax(x, dim=0) = tensor([[0.0900, 0.2447],
+[0.2447,0.6150],
+[0.6652,0.8103]])
+如果我们调用torch.softmax(x，dim=1），那么softmax操作将在每一行上进行，即：torch.softmax(x, dim=1) = tensor([[0.2689, 0.7311],
+[0.2689,0.7311],
+[0.2689,0.7311]])
+因此，dim参数的作用是指定在哪个维度上进行 softmax操作，这对于处理多维数据非常重要。
+
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+class Net(nn.Module):
+def
+_init__(self):
+super(Net，self)._init_()self.fc1 = nn.Linear(3, 3)self.fc2 = nn.Linear(3, 2)self.fc3 = nn.Linear(2, 3)
+def forward(self,x):
+x = F.relu(self.fc1(x))x =F.relu(self.fc2(x))
+x = F.softmax(self.fc3(x),dim=1)return x
+net = Net()
+x=torch.tensor([[1.0,2.0,0.4],[3.0,4,0.1],[5.0,6.0,0.3]],dtype= torch.float32)net(x)
+Image(url="15.png")
+
+

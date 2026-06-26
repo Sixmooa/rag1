@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多模态 RAG 系统</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>多模态 RAG 系统</h1>
+            <div class="header-stats" id="header-stats"></div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="upload">文件上传</button>
+            <button class="tab-btn" data-tab="chat">AI 对话</button>
+        </nav>
+
+        <!-- 上传 Tab -->
+        <section id="upload-tab" class="tab-content active">
+            <div class="drop-zone" id="drop-zone">
+                <div class="drop-zone-content">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8b95a5" stroke-width="1.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <p>拖拽文件到此处，或 <label for="file-input" class="link">点击选择</label></p>
+                    <p class="hint">支持 PDF、PNG、JPG、TXT、MD</p>
+                </div>
+                <input type="file" id="file-input" multiple accept=".pdf,.png,.jpg,.jpeg,.bmp,.webp,.txt,.md,.text,.markdown">
+            </div>
+
+            <div class="file-list" id="file-list"></div>
+
+            <button class="btn btn-primary" id="upload-btn" disabled>
+                <span class="btn-text">上传并处理</span>
+                <span class="btn-spinner hidden"></span>
+            </button>
+
+            <div class="upload-results" id="upload-results"></div>
+        </section>
+
+        <!-- 对话 Tab -->
+        <section id="chat-tab" class="tab-content">
+            <div class="chat-header">
+                <div class="session-info">
+                    <span class="session-label">当前会话:</span>
+                    <span class="session-id" id="session-id">-</span>
+                </div>
+                <div class="chat-actions">
+                    <button class="btn btn-sm" id="new-session-btn">新对话</button>
+                    <div class="session-dropdown">
+                        <button class="btn btn-sm" id="history-btn">历史会话</button>
+                        <div class="dropdown-content" id="session-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="welcome-msg">
+                    <p>欢迎使用多模态 RAG 问答系统！</p>
+                    <p>请先上传文档，然后在此提问。</p>
+                </div>
+            </div>
+
+            <form class="chat-input" id="chat-form">
+                <input type="text" id="question-input" placeholder="输入您的问题..." autocomplete="off">
+                <button type="submit" class="btn btn-primary" id="send-btn">
+                    <span class="btn-text">发送</span>
+                    <span class="btn-spinner hidden"></span>
+                </button>
+            </form>
+        </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
