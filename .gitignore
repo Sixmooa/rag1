@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+multimodal_db/
+chroma_db/
+chroma_db.bak/
+multimodal_db.bak/
+memory/*.json
+source/settings.json
+.pytest_cache/
+.huggingface/
+*.log
