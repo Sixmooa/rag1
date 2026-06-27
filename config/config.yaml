@@ -1,27 +1,25 @@
 models:
   clip: "sentence-transformers/clip-ViT-B-32-multilingual-v1"
   bge: "BAAI/bge-m3"
-  device: "auto"  # auto / cuda / cpu
+  clip_image: "openai/clip-vit-base-patch32"
+  device: "auto"
 
 llm:
   api_key: "sk-7b3afa71e64b4262b9ec11538c712ac9"
   base_url: "https://api.deepseek.com"
-  model: "deepseek-v4-flash"  # 也可用 deepseek-v4-pro
+  model: "deepseek-v4-flash"
 
 chroma:
   db_path: "./multimodal_db"
-  clip_collection: "documents_collection"
-  text_collection: "text_collection"
-  metric: "cosine"
+  clip_collection: "image_index"
+  text_collection: "text_index"
 
 retrieval:
-  default_top_k: 3
-  hybrid_alpha: 0.3
+  top_k: 3
+  fusion_alpha: 0.3
   rrf_k: 60
   chunk_size: 800
   chunk_overlap: 200
-  max_hops: 5
+  rerank_top_n: 3
+  markdown_max_tokens: 1500
   pdf_dpi: 200
-
-paths:
-  source_dir: "./source"
