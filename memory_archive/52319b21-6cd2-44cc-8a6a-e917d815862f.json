@@ -1,0 +1,61 @@
+{
+  "session_id": "52319b21-6cd2-44cc-8a6a-e917d815862f",
+  "created_at": "2026-04-19 21:20:31",
+  "messages": [
+    {
+      "role": "user",
+      "content": "claude code的配置文件怎么写",
+      "timestamp": "2026-04-19 21:20:40",
+      "type": "question"
+    },
+    {
+      "role": "assistant",
+      "content": "根据提供的文档内容，Claude Code的配置文件是一个JSON格式的文件，主要包含两个部分：环境变量配置和插件启用配置。\n\n## 配置文件结构\n\n### 1. 环境变量配置 (`env`)\n```json\n\"env\": {\n  \"ANTHROPIC_AUTH_TOKEN\": \"你的认证令牌\",\n  \"ANTHROPIC_BASE_URL\": \"API基础URL\",\n  \"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"默认Haiku模型\",\n  \"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"默认Opus模型\", \n  \"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"默认Sonnet模型\",\n  \"ANTHROPIC_MODEL\": \"默认模型\"\n}\n```\n\n### 2. 插件启用配置 (`enabledPlugins`)\n```json\n\"enabledPlugins\": {\n  \"插件名称\": true/false,\n  // true表示启用，false表示禁用\n}\n```\n\n## 完整示例配置\n\n```json\n{\n  \"env\": {\n    \"ANTHROPIC_AUTH_TOKEN\": \"sk-wPVIor9YniAAaOI6auyHHHsR05ld3rIDGt3OtyRd9w6oXJPt\",\n    \"ANTHROPIC_BASE_URL\": \"https://api.socienceai.cn/\",\n    \"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"step-3.5-flash\",\n    \"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"step-3.5-flash\",\n    \"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"step-3.5-flash\",\n    \"ANTHROPIC_MODEL\": \"step-3.5-flash\"\n  },\n  \"enabledPlugins\": {\n    \"code-review@claude-plugins-official\": true,\n    \"code-simplifier@claude-plugins-official\": true,\n    \"context7@claude-plugins-official\": true,\n    \"feature-dev@claude-plugins-official\": true,\n    \"frontend-design@claude-plugins-official\": true,\n    \"github@claude-plugins-official\": false,\n    \"playwright@claude-plugins-official\": true,\n    \"ralph-loop@claude-plugins-official\": true,\n    \"skill-creator@claude-plugins-official\": true,\n    \"superpowers@claude-plugins-official\": true\n  }\n}\n```\n\n## 关键说明\n- 配置文件必须是有效的JSON格式\n- `ANTHROPIC_AUTH_TOKEN`是必需的认证令牌\n- 插件名称需要按照官方插件标识符格式\n- 通过设置`true/false`来控制插件的启用状态\n\n信息来源：settings.json 第0页",
+      "timestamp": "2026-04-19 21:20:40",
+      "type": "answer",
+      "sources": [
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 63,
+          "rrf_score": 0.0161
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 2,
+          "rrf_score": 0.0157
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 8,
+          "rrf_score": 0.0156
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 75,
+          "rrf_score": 0.0152
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 39,
+          "rrf_score": 0.0151
+        },
+        {
+          "file": "DeepSeek_V2_Paper.pdf",
+          "page": 3,
+          "rrf_score": 0.015
+        },
+        {
+          "file": "settings.json",
+          "page": 0,
+          "rrf_score": 0.0115
+        },
+        {
+          "file": "DeepSeek_V2_Paper.pdf",
+          "page": 4,
+          "rrf_score": 0.0111
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-04-19 21:20:40"
+}

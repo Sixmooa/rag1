@@ -15,7 +15,15 @@
       "Bash(git branch *)",
       "Bash(git add *)",
       "Bash(git -c user.email=local@local -c user.name=local commit -m \"chore: init git repo with gitignore\")",
-      "Bash(git config *)"
+      "Bash(git config *)",
+      "Bash(git commit *)",
+      "Bash(./venv/Scripts/python.exe -m pip install -r requirements.txt)",
+      "Bash(./venv/Scripts/python.exe -c \"import llama_index.core; from llama_index.embeddings.huggingface import HuggingFaceEmbedding; from llama_index.llms.openai_like import OpenAILike; from llama_index.vector_stores.chroma import ChromaVectorStore; from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker; from sse_starlette.sse import EventSourceResponse; import docling; print\\('OK'\\)\")",
+      "Bash(cp -r multimodal_db multimodal_db.bak)",
+      "Bash(mkdir -p memory_archive)",
+      "Bash(cp memory/*.json memory_archive/)",
+      "Bash(rm -rf multimodal_db chroma_db)",
+      "Bash(rm -f memory/*.json)"
     ]
   }
 }

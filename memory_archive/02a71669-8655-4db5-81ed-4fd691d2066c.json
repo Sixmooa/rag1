@@ -1,0 +1,96 @@
+{
+  "session_id": "02a71669-8655-4db5-81ed-4fd691d2066c",
+  "created_at": "2026-04-21 13:30:11",
+  "messages": [
+    {
+      "role": "user",
+      "content": "deepseek这篇论文的内容是什么",
+      "timestamp": "2026-04-21 13:30:17",
+      "type": "question"
+    },
+    {
+      "role": "assistant",
+      "content": "根据提供的文档内容，DeepSeek V2论文的主要内容涉及**使用主题建模技术分析地下黑客论坛中的漏洞利用信息**。具体包括：\n\n## 核心研究内容\n\n1. **主题建模应用**：论文使用**潜在狄利克雷分配（LDA）** 对从地下黑客论坛收集的数据进行主题建模，以识别隐藏的主题和讨论，重点关注漏洞利用技术、潜在目标和相关主题。\n\n2. **数据集**：\n   - **CrimeBB数据集**：来自剑桥网络犯罪中心，包含16个地下论坛，总计1,316,494用户、1,802个板块、5,254,646个讨论线程和54,512,094个帖子\n   - **NVD数据**：美国国家标准与技术研究院维护的国家漏洞数据库，包含软件漏洞和安全问题的详细信息\n\n3. **文本预处理**：\n   - 去除停用词（代词、副词、冠词等）\n   - 去除标点符号\n   - 去除特殊字符\n\n4. **研究目标**：通过分析地下论坛中的讨论，识别关键主题，为漏洞利用 landscape 提供有价值的见解\n\n## 论文结构（根据目录）\n- 引言\n- 方法（包括数据集和预处理）\n- 实验结果\n- 讨论\n- 结论\n\n## 参考文献\n论文包含23篇参考文献，涵盖主题建模、网络安全、漏洞分析、文本处理等领域的研究。\n\n**注意**：提供的文档片段主要包含论文的方法论部分（第2-3页）和参考文献（第6页），未包含模型架构、实验设计和结果分析等核心章节的完整内容。\n\n信息来源：DeepSeek_V2_Paper.pdf 第2页、第6页",
+      "timestamp": "2026-04-21 13:30:17",
+      "type": "answer",
+      "sources": [
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 8,
+          "rrf_score": 0.0162
+        },
+        {
+          "file": "DeepSeek_V2_Paper.pdf",
+          "page": 2,
+          "rrf_score": 0.0159
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 13,
+          "rrf_score": 0.0159
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 74,
+          "rrf_score": 0.0158
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 73,
+          "rrf_score": 0.0152
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 17,
+          "rrf_score": 0.0151
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 69,
+          "rrf_score": 0.0149
+        },
+        {
+          "file": "DeepSeek_V2_Paper.pdf",
+          "page": 6,
+          "rrf_score": 0.0115
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 9,
+          "rrf_score": 0.0115
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 18,
+          "rrf_score": 0.0115
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 2,
+          "rrf_score": 0.0113
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 42,
+          "rrf_score": 0.0113
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 6,
+          "rrf_score": 0.0113
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 63,
+          "rrf_score": 0.0113
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 41,
+          "rrf_score": 0.0111
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-04-21 13:30:17"
+}

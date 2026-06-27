@@ -1,0 +1,36 @@
+{
+  "session_id": "88c777ef-6ee8-4c63-ae0c-d91c22fb0c82",
+  "created_at": "2026-04-19 14:48:46",
+  "messages": [
+    {
+      "role": "user",
+      "content": "在预处理阶段，为何强调使用\"词形还原（Lemmatization）\"而非\"词干提取（Stemming）\"？",
+      "timestamp": "2026-04-19 14:48:46",
+      "type": "question"
+    },
+    {
+      "role": "assistant",
+      "content": "根据提供的文档内容，**文档中未提及**关于自然语言处理（NLP）预处理阶段中“词形还原（Lemmatization）”与“词干提取（Stemming）”的任何信息。\n\n文档内容完全聚焦于**人工智能伦理与道德困境的哲学讨论**，主要议题包括：\n1.  道德困境（如电车难题）作为思想实验的目的与局限性。\n2.  使用此类困境 benchmarking AI 伦理决策所存在的概念错误和元伦理问题。\n3.  对“测量目标”与“实际测量内容”之间差距的批判。\n\n文档未涉及任何文本预处理技术、自然语言处理流程或相关技术比较。\n\n**信息来源：** 文档内容（19_Moral_Dilemma_AI_Reasoning.pdf 第11、14、15页）中均无相关论述。",
+      "timestamp": "2026-04-19 14:48:46",
+      "type": "answer",
+      "sources": [
+        {
+          "file": "19_Moral_Dilemma_AI_Reasoning.pdf",
+          "page": 15,
+          "rrf_score": 0.0155
+        },
+        {
+          "file": "19_Moral_Dilemma_AI_Reasoning.pdf",
+          "page": 11,
+          "rrf_score": 0.0153
+        },
+        {
+          "file": "19_Moral_Dilemma_AI_Reasoning.pdf",
+          "page": 14,
+          "rrf_score": 0.0152
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-04-19 14:48:46"
+}

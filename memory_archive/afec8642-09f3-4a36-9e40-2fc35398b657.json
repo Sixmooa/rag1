@@ -1,0 +1,61 @@
+{
+  "session_id": "afec8642-09f3-4a36-9e40-2fc35398b657",
+  "created_at": "2026-06-26 16:11:11",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hi",
+      "timestamp": "2026-06-26 16:11:16",
+      "type": "question"
+    },
+    {
+      "role": "assistant",
+      "content": "未检索到相关信息，我只能根据知识库中的文档内容回答问题。\n\n**知识库概况：**\n当前知识库统计：共 4 个文件（PDF 2 篇, 图片 0 张, 文本 2 个），文本向量 113 条, 图像向量 81 条。\n文件清单：\n  - DeepSeek_V2_Paper.pdf (pdf)\n  - GPT3_Paper.pdf (pdf)\n  - settings.json (txt)\n  - AI任务分解算法-TaskWeaver.md (md)\n\n如果您的问题与上述文件内容相关，请换个方式描述后重试。",
+      "timestamp": "2026-06-26 16:11:16",
+      "type": "answer",
+      "sources": [
+        {
+          "file": "AI任务分解算法-TaskWeaver.md",
+          "page": 0,
+          "rrf_score": 0.0217
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 63,
+          "rrf_score": 0.016
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 50,
+          "rrf_score": 0.016
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 30,
+          "rrf_score": 0.0153
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 29,
+          "rrf_score": 0.0152
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 73,
+          "rrf_score": 0.0152
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 57,
+          "rrf_score": 0.0148
+        },
+        {
+          "file": "GPT3_Paper.pdf",
+          "page": 55,
+          "rrf_score": 0.0113
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-06-26 16:11:16"
+}

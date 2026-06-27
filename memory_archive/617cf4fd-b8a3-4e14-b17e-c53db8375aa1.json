@@ -1,0 +1,36 @@
+{
+  "session_id": "617cf4fd-b8a3-4e14-b17e-c53db8375aa1",
+  "created_at": "2026-04-19 18:58:46",
+  "messages": [
+    {
+      "role": "user",
+      "content": "这篇论文的标题是什么？",
+      "timestamp": "2026-04-19 18:59:23",
+      "type": "question"
+    },
+    {
+      "role": "assistant",
+      "content": "根据提供的文档内容，这篇论文的标题是：\n\n**Inferring Discussion Topics about Exploitation of Vulnerabilities from Underground Hacking Forums**\n\n该标题出现在文档的第1页，位于论文的开头部分，紧接在作者信息之前。\n\n**信息来源：** DeepSeek_V2_Paper.pdf 第1页",
+      "timestamp": "2026-04-19 18:59:23",
+      "type": "answer",
+      "sources": [
+        {
+          "file": "DeepSeek_V2_Paper.pdf",
+          "page": 6,
+          "rrf_score": 0.0162
+        },
+        {
+          "file": "DeepSeek_V2_Paper.pdf",
+          "page": 1,
+          "rrf_score": 0.0161
+        },
+        {
+          "file": "DeepSeek_V2_Paper.pdf",
+          "page": 3,
+          "rrf_score": 0.016
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-04-19 18:59:23"
+}
