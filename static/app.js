@@ -239,30 +239,80 @@ async function askQuestion() {
     spinner.classList.remove('hidden');
 
     const typingEl = appendTyping();
+    const msgEl = appendMessage('assistant', '');
+    const contentEl = msgEl.querySelector('.content');
+    let sourcesEl = null;
+    let buffer = '';
 
     try {
-        const r = await fetch('/api/ask', {
+        const resp = await fetch('/api/ask', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                question,
-                session_id: currentSessionId,
-            }),
+            body: JSON.stringify({ question, session_id: currentSessionId }),
         });
-        const data = await r.json();
-        currentSessionId = data.session_id;
-        document.getElementById('session-id').textContent = currentSessionId.substring(0, 8) + '...';
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
 
-        typingEl.remove();
-        appendMessage('assistant', data.answer, data.sources);
+        const reader = resp.body.getReader();
+        const decoder = new TextDecoder();
+        let sseBuffer = '';
+
+        while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            sseBuffer += decoder.decode(value, { stream: true });
+
+            let idx;
+            while ((idx = sseBuffer.indexOf('\n\n')) >= 0) {
+                const frame = sseBuffer.slice(0, idx);
+                sseBuffer = sseBuffer.slice(idx + 2);
+                const evt = parseSseFrame(frame);
+                if (!evt) continue;
+
+                if (evt.type === 'token') {
+                    buffer += JSON.parse(evt.data);
+                    contentEl.innerHTML = renderMarkdown(buffer);
+                } else if (evt.type === 'retrieval') {
+                    const sources = JSON.parse(evt.data);
+                    if (sources.length > 0) {
+                        sourcesEl = document.createElement('div');
+                        sourcesEl.className = 'sources';
+                        sourcesEl.innerHTML = '来源: ' + sources.map(s =>
+                            `<span>${s.file} 第${s.page}页 (${(s.score || 0).toFixed(4)})</span>`
+                        ).join('');
+                        msgEl.appendChild(sourcesEl);
+                    }
+                } else if (evt.type === 'done') {
+                    const d = JSON.parse(evt.data);
+                    currentSessionId = d.session_id;
+                    document.getElementById('session-id').textContent =
+                        currentSessionId.substring(0, 8) + '...';
+                } else if (evt.type === 'error') {
+                    const e = JSON.parse(evt.data);
+                    buffer = `请求失败: ${e.message}`;
+                    contentEl.innerHTML = renderMarkdown(buffer);
+                }
+                const container = document.getElementById('chat-messages');
+                container.scrollTop = container.scrollHeight;
+            }
+        }
     } catch (e) {
-        typingEl.remove();
-        appendMessage('assistant', `请求失败: ${e.message}`);
+        contentEl.innerHTML = `请求失败: ${e.message}`;
     } finally {
+        typingEl.remove();
         sendBtn.disabled = false;
         btnText.textContent = '发送';
         spinner.classList.add('hidden');
     }
+}
+
+function parseSseFrame(frame) {
+    const lines = frame.split('\n');
+    let type = null, data = null;
+    for (const line of lines) {
+        if (line.startsWith('event: ')) type = line.slice(7);
+        else if (line.startsWith('data: ')) data = line.slice(6);
+    }
+    return type ? { type, data } : null;
 }
 
 function appendMessage(role, content, sources) {
