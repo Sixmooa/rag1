@@ -262,9 +262,9 @@ async function askQuestion() {
             sseBuffer += decoder.decode(value, { stream: true });
 
             let idx;
-            while ((idx = sseBuffer.indexOf('\n\n')) >= 0) {
+            while ((idx = sseBuffer.indexOf('\r\n\r\n')) >= 0) {
                 const frame = sseBuffer.slice(0, idx);
-                sseBuffer = sseBuffer.slice(idx + 2);
+                sseBuffer = sseBuffer.slice(idx + 4);
                 const evt = parseSseFrame(frame);
                 if (!evt) continue;
 
@@ -306,7 +306,7 @@ async function askQuestion() {
 }
 
 function parseSseFrame(frame) {
-    const lines = frame.split('\n');
+    const lines = frame.split(/\r\n|\n/);
     let type = null, data = null;
     for (const line of lines) {
         if (line.startsWith('event: ')) type = line.slice(7);
@@ -332,7 +332,7 @@ function appendMessage(role, content, sources) {
         html += '<div class="sources">';
         html += '来源: ';
         sources.forEach(s => {
-            html += `<span>${s.file} 第${s.page}页 (${s.rrf_score})</span>`;
+            html += `<span>${s.file} 第${s.page}页 (${(s.score ?? s.rrf_score ?? 0).toFixed(4)})</span>`;
         });
         html += '</div>';
     }
@@ -340,6 +340,7 @@ function appendMessage(role, content, sources) {
     div.innerHTML = html;
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
+    return div;
 }
 
 function appendTyping() {
