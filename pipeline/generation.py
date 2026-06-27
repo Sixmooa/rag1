@@ -104,11 +104,13 @@ class GenerationPipeline:
 
     def retrieve_and_format(self, question: str,
                             session_id: Optional[str] = None) -> tuple[str, list[dict]]:
-        """CLI 用同步路径：用 complete() 一次性返回。"""
+        """CLI 用同步路径：用 complete() 一次性返回。
+
+        Loop-safe: 若调用方已在事件循环中（如 Jupyter / async 测试），
+        退到独立线程跑 retrieve，避免 "This event loop is already running" 错误。
+        """
         import asyncio
-        nodes = asyncio.get_event_loop().run_until_complete(
-            self._retrieval.retrieve(question)
-        )
+        nodes = _run_coro_sync(self._retrieval.retrieve(question))
         sources = [
             {
                 "file": _basename(n.metadata.get("file_path", "")),
@@ -178,3 +180,36 @@ def _history_messages(sess) -> list[dict]:
         if role in ("user", "assistant"):
             out.append({"role": role, "content": m["content"]})
     return out
+
+
+def _run_coro_sync(coro):
+    """同步执行 coroutine：无活动循环时直接 run_until_complete；
+    有活动循环时退到独立线程跑，避免阻塞主循环。"""
+    import asyncio
+    try:
+        loop = asyncio.get_event_loop()
+    except RuntimeError:
+        loop = None
+    if loop is None or not loop.is_running():
+        if loop is None:
+            loop = asyncio.new_event_loop()
+        return loop.run_until_complete(coro)
+    # 已在运行中 —— 用线程隔离的新循环
+    import threading
+    result_box: dict = {}
+
+    def _worker():
+        new_loop = asyncio.new_event_loop()
+        try:
+            result_box["v"] = new_loop.run_until_complete(coro)
+        except Exception as e:
+            result_box["e"] = e
+        finally:
+            new_loop.close()
+
+    t = threading.Thread(target=_worker)
+    t.start()
+    t.join()
+    if "e" in result_box:
+        raise result_box["e"]
+    return result_box.get("v")

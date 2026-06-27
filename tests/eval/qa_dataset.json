@@ -1,0 +1,27 @@
+[
+  {
+    "question": "GPT-3 用了多少参数",
+    "gold_files": ["GPT3_Paper.pdf"],
+    "gold_keywords": ["175", "billion", "175B"]
+  },
+  {
+    "question": "DeepSeek-V2 用了什么注意力机制",
+    "gold_files": ["DeepSeek_V2_Paper.pdf"],
+    "gold_keywords": ["MLA", "Multi-Head", "Latent Attention"]
+  },
+  {
+    "question": "AI 道德困境的推理过程",
+    "gold_files": ["19_Moral_Dilemma_AI_Reasoning.pdf"],
+    "gold_keywords": ["moral", "dilemma", "reasoning"]
+  },
+  {
+    "question": "TaskWeaver 是什么",
+    "gold_files": ["expert1_llm_evaluation.md"],
+    "gold_keywords": ["TaskWeaver", "任务分解", "代码生成"]
+  },
+  {
+    "question": "知识库里有哪些论文",
+    "gold_files": [],
+    "gold_keywords": ["GPT3", "DeepSeek", "Moral"]
+  }
+]
