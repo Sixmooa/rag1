@@ -23,7 +23,9 @@
       "Bash(mkdir -p memory_archive)",
       "Bash(cp memory/*.json memory_archive/)",
       "Bash(rm -rf multimodal_db chroma_db)",
-      "Bash(rm -f memory/*.json)"
+      "Bash(rm -f memory/*.json)",
+      "Bash(mkdir -p config llm parsers indices postprocessors pipeline delivery/api/routes tests/unit tests/integration tests/eval)",
+      "Bash(touch __TRACKED_VAR__/__init__.py)"
     ]
   }
 }
