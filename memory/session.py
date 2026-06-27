@@ -57,6 +57,11 @@ class Session:
         return self.add("assistant", answer, type="answer",
                         sources=sources or [])
 
+    def add_streaming(self, question: str, full_answer: str,
+                      sources: list[dict] | None = None) -> dict:
+        """与 add_qa 等价，给流式 API 用，语义清晰。"""
+        return self.add_qa(question, full_answer, sources=sources)
+
     @property
     def messages(self) -> list[dict]:
         return self.data["messages"]
